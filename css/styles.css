@@ -185,6 +185,12 @@ nav h1 a {
   width: 100%;
 }
 
+#restaurants-list li.fake-for-flex {
+  padding: 0;
+  min-height: 0;
+  background-color: transparent;
+}
+
 #restaurants-list .restaurant-img {
   background-color: #ccc;
   display: block;

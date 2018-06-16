@@ -147,6 +147,11 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
   restaurants.forEach(restaurant => {
     ul.append(createRestaurantHTML(restaurant));
   });
+  if(restaurants.length % 3 === 2) {
+    const li = document.createElement('li');
+    li.classList.add('fake-for-flex');
+    ul.append(li);
+  }
   addMarkersToMap();
 }
 
