@@ -80,6 +80,8 @@ fetchRestaurantFromURL = (callback) => {
  * Create restaurant HTML and add it to the webpage
  */
 fillRestaurantHTML = (restaurant = self.restaurant) => {
+  const sizes = [400,500,600,700,800,1000,1200,1400];
+  let srcsetValue = '';
   const name = document.getElementById('restaurant-name');
   name.innerHTML = restaurant.name;
 
@@ -87,8 +89,14 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   address.innerHTML = restaurant.address;
 
   const image = document.getElementById('restaurant-img');
-  image.className = 'restaurant-img'
-  image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  image.className = 'restaurant-img';
+  image.src = DBHelper.imageUrlForRestaurant(restaurant, 800);
+  image.setAttribute('sizes', '(min-width: 700px) 50vw, 100vw');
+  sizes.forEach((size) => {
+    srcsetValue += `${DBHelper.imageUrlForRestaurant(restaurant, size)} ${size}w,`;
+  });
+  image.setAttribute('srcset', srcsetValue);
+  image.setAttribute('alt', `Restaurant ${restaurant.name} from ${restaurant.neighborhood}`);
 
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;
@@ -152,8 +160,9 @@ createReviewHTML = (review) => {
   name.innerHTML = review.name;
   li.appendChild(name);
 
-  const date = document.createElement('p');
+  const date = document.createElement('time');
   date.innerHTML = review.date;
+  date.setAttribute('datatime', review.date);
   li.appendChild(date);
 
   const rating = document.createElement('p');
@@ -173,6 +182,7 @@ createReviewHTML = (review) => {
 fillBreadcrumb = (restaurant=self.restaurant) => {
   const breadcrumb = document.getElementById('breadcrumb');
   const li = document.createElement('li');
+  li.setAttribute('aria-current', 'page');
   li.innerHTML = restaurant.name;
   breadcrumb.appendChild(li);
 }
