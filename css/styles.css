@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 
-body,td,th,p,time{
+body,td,th,p,time,button{
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 1.2rem;
 	color: #333;
@@ -511,4 +511,28 @@ nav h1 a {
   font-size: 1.2rem;
   text-align: center;
   background-color: #333;
+}
+
+.update-panel {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  z-index: 2000;
+  background-color: #333;
+  color: #fff;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.update-panel h3 {
+  margin: 0;
+}
+
+.update-panel button {
+  background: #b15000;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  padding: 0.5rem;
+  margin: 0.5rem;
 }

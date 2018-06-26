@@ -1,6 +1,6 @@
-const currentCacheName = 'restaurant-reviews-v1';
+const currentCacheName = 'restaurant-reviews-v13';
 
-// during installing add main resources to cache
+// when installing add main resources to cache
 self.addEventListener('install', function (event) {
   event.waitUntil(
     caches.open(currentCacheName).then(function (cache) {
@@ -21,7 +21,7 @@ self.addEventListener('install', function (event) {
   );
 });
 
-// delete old caches
+// when activating delete old caches
 self.addEventListener('activate', function (event) {
   event.waitUntil(
     caches.keys().then(function (cacheNames) {
@@ -38,7 +38,6 @@ self.addEventListener('activate', function (event) {
 });
 
 self.addEventListener('fetch', (event) => {
-
   // There were some problems with caching map tiles therefore
   // there are always fetched from the web
   if (event.request.url.startsWith('https://api.tiles.mapbox.com')) {
@@ -71,6 +70,13 @@ self.addEventListener('fetch', (event) => {
 });
 
 const getErrorResponse = () => new Response(
-  `<p>Can't get resource</p>`,
+  `<p class="respond-error">Can't get resource</p>`,
   { headers: { 'Content-Type': 'text/html' } }
 );
+
+// handle messages from pages - currently only in order to force app update
+self.addEventListener('message', (event) => {
+  if (event.data.action === 'skipWaiting') {
+    self.skipWaiting();
+  }
+});
