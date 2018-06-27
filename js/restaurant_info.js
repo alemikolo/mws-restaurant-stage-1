@@ -80,7 +80,7 @@ fetchRestaurantFromURL = (callback) => {
  * Create restaurant HTML and add it to the webpage
  */
 fillRestaurantHTML = (restaurant = self.restaurant) => {
-  const sizes = [400,500,600,700,800,1000,1200,1400];
+  const sizes = [400, 500, 600, 700, 800, 1000, 1200, 1400];
   let srcsetValue = '';
   const name = document.getElementById('restaurant-name');
   name.innerHTML = restaurant.name;
@@ -183,7 +183,7 @@ createReviewHTML = (review) => {
 /**
  * Add restaurant name to the breadcrumb navigation menu
  */
-fillBreadcrumb = (restaurant=self.restaurant) => {
+fillBreadcrumb = (restaurant = self.restaurant) => {
   const breadcrumb = document.getElementById('breadcrumb');
   const li = document.createElement('li');
   li.setAttribute('aria-current', 'page');

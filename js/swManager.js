@@ -74,7 +74,7 @@
   // create function for handling request for app update
   const _createUpdateHandler = (worker) => {
     return () => {
-      worker.postMessage({action: 'skipWaiting'});
+      worker.postMessage({ action: 'skipWaiting' });
       document.querySelector('#update-panel').remove();
     }
   }
