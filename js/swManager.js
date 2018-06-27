@@ -42,7 +42,7 @@
   // show panel to let the user react on app updates
   const _updateReady = (worker) => {
     const body = document.querySelector('body');
-    body.appendChild(_createUpdatePanel(worker));
+    body.insertAdjacentElement('afterbegin', _createUpdatePanel(worker));
   };
 
   // create update panel
@@ -50,16 +50,19 @@
     const panel = document.createElement('div');
     panel.classList.add('update-panel');
     panel.setAttribute('id', 'update-panel');
+    panel.setAttribute('role', 'alert');
+    panel.setAttribute('aria-labelledby', 'update-panel-header');
 
     const header = document.createElement('h3');
-    header.innerHTML = 'New version available';
+    header.setAttribute('id', 'update-panel-header');
+    header.innerHTML = 'New version of Restaurant Review is available';
 
     const refreshButton = document.createElement('button');
-    refreshButton.innerHTML = 'refresh';
+    refreshButton.innerHTML = 'refresh to update';
     refreshButton.addEventListener('click', _createUpdateHandler(worker));
 
     const dismissButton = document.createElement('button');
-    dismissButton.innerHTML = 'dismiss';
+    dismissButton.innerHTML = 'dismiss updating';
     dismissButton.addEventListener('click', _dismissHandler);
 
     panel.appendChild(header);
