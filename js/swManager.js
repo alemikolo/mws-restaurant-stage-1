@@ -51,6 +51,7 @@
     panel.classList.add('update-panel');
     panel.setAttribute('id', 'update-panel');
     panel.setAttribute('role', 'alert');
+    panel.setAttribute('tabindex', -1);
     panel.setAttribute('aria-labelledby', 'update-panel-header');
 
     const header = document.createElement('h3');

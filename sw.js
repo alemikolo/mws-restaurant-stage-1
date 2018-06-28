@@ -1,4 +1,4 @@
-const currentCacheName = 'restaurant-reviews-v19';
+const currentCacheName = 'restaurant-reviews-v1';
 
 // when installing add main resources to cache
 self.addEventListener('install', function (event) {

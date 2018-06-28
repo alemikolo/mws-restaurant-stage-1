@@ -100,7 +100,7 @@ nav h1 a {
 }
 
 /* Add a slash symbol (/) before/behind each list item */
-#breadcrumb li+li:before {
+#breadcrumb ul li+li:before {
     padding-right: 0.75rem;
     color: black;
     content: "/\00a0";
@@ -377,7 +377,6 @@ nav h1 a {
 }
 @media screen and (min-width: 960px) {
   .inside header {
-    position: fixed;
     width: 50%;
   }
   .inside #maincontent {
@@ -385,7 +384,6 @@ nav h1 a {
   }
   #restaurant-container {
     width: 50%;
-    margin-top: 130px;
   }
   .inside #map-container {
     position: fixed;
@@ -405,16 +403,17 @@ nav h1 a {
 }
 @media screen and (min-width: 1200px) {
   .inside header {
+    /* position: fixed; */
     width: 100%;
   }
   .inside #maincontent {
     flex-direction: row;
   }
   .inside #map-container {
+    position: absolute;
     width: 600px;
     height: calc(100% - 190px);
-    top: 130px;
-    bottom: 60px;
+    height: 900px;
     right: auto;
   }
   #restaurant-container,
@@ -427,8 +426,8 @@ nav h1 a {
     z-index: 1500;
   }
 }
-#restaurant-container h2,
-#reviews-container h2 {
+#restaurant-container h3,
+#reviews-container h3 {
   color: #b15000;
   font-size: 1.4rem;
   font-weight: 300;
@@ -514,11 +513,15 @@ nav h1 a {
 }
 
 .update-panel {
+  height: 110;
+  position: relative;
+  box-sizing: border-box;
   width: 100%;
   background-color: #333;
   color: #fff;
   padding: 0.5rem;
   text-align: center;
+  z-index: 920;
 }
 
 .update-panel h3 {
@@ -532,4 +535,15 @@ nav h1 a {
   border-radius: 3px;
   padding: 0.5rem;
   margin: 0.5rem;
+}
+
+@media screen and (min-width: 960px) {
+  .update-panel {
+    width: 50%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .update-panel {
+    width: 100%;
+  }
 }
